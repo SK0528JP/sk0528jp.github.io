@@ -306,7 +306,7 @@ li {
 .contains {
   /* サイズは自由に変更してください。*/
   /* 下の.slideも同じサイズにしてください。 */
-  width: 85%;
+  width: 70vm%;
   overflow: hidden;
   position: relative;
   padding: 0;
@@ -320,7 +320,7 @@ li {
 .slide {
   /* サイズは自由に変更してください。*/
   /* 上の.containsも同じサイズにしてください。 */
-  width: 85%;
+  width: 70vm;
   position: absolute;
   /* スライドの初期値は選択されていないので透明にしておく */
   opacity: 0;
