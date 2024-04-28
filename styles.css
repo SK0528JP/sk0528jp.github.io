@@ -18,9 +18,13 @@ body {
 }
 
 body a {
-    color:#000000;
+    color: #007a75;
     text-decoration: none;
     font-weight: bold;
+}
+
+body a:hover {
+    color: #5b9489;
 }
 
 body h2 {
