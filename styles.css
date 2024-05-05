@@ -31,6 +31,10 @@ body h2 {
   border-bottom: 4px solid #007a75;
 }
 
+.logo img {
+    cursor: pointer; /* カーソルをポインターに変更 */
+}
+
 /* メニューバーのスタイル */
 .navbar {
     font-family: 'ZenMaruGothic-Light', sans-serif;
