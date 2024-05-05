@@ -1,5 +1,6 @@
-document.getElementById('logo').addEventListener('click', function() {
-  console.log("Logo clicked"); // クリックされたことをコンソールに表示
-  var audio = document.getElementById('audio');
-  audio.play(); // 音声を再生
+const logoImage = document.getElementById('logoImage');
+const audioPlayer = document.getElementById('audioPlayer');
+
+logoImage.addEventListener('click', () => {
+  audioPlayer.play();
 });
