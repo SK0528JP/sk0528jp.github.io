@@ -83,7 +83,7 @@ header {
 header #logo img {
 	width: 120px;		/*幅*/
 	position: fixed;	/*画面に対して固定表示*/
-	left: -10px;		/*ウィンドウに対して左からの配置場所*/
+	left: 5px;		/*ウィンドウに対して左からの配置場所*/
 	top: 5px;			/*ウィンドウに対して上からの配置場所*/
 	background: #fff;	/*背景色*/
 	box-shadow: 0px 0px 30px rgba(0,0,0,0.3);
