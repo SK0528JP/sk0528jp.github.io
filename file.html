@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #file-list {
+            margin: 20px auto;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+            border-radius: 5px;
+        }
+
+        .file-item {
+            margin: 10px 0;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            background: #e9ecef;
+            border-radius: 3px;
+        }
+
+        .file-item a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        .file-item a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>File Viewer & Downloader</h1>
+    <div id="file-list"></div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const fileList = document.getElementById("file-list");
+
+            // 手動でファイルリストを定義
+            const files = [
+                { name: "KTOK,zip", path: "file/ktok.zip" },
+                { name: "Admin.zip", path: "file/admin.zip" }
+            ];
+
+            // 動的にファイルリストを表示
+            files.forEach(file => {
+                const fileItem = document.createElement("div");
+                fileItem.className = "file-item";
+                
+                const link = document.createElement("a");
+                link.href = file.path;
+                link.textContent = file.name;
+                link.download = file.name;
+
+                fileItem.appendChild(link);
+                fileList.appendChild(fileItem);
+            });
+        });
+    </script>
+</body>
+</html>
