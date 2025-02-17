@@ -416,15 +416,15 @@ header #logo img {
 	font-size: 2em;		/*文字サイズ*/
 }
 
-/*１つ目のメニュー(About)*/
+/*１つ目のメニュー(Notice)*/
 #menubar li:nth-of-type(1) {
 	left: 20%;			/*ウィンドウに対して左からの配置場所*/
-	top: 27%;			/*ウィンドウに対して上からの配置場所*/
+	top: 32%;			/*ウィンドウに対して上からの配置場所*/
 	width: 150px;		/*幅*/
 	line-height: 150px;	/*高さ*/
 }
 
-/*２つ目のメニュー(Gallery)*/
+/*２つ目のメニュー(About)*/
 #menubar li:nth-of-type(2) {
 	left: 4%;			/*ウィンドウに対して左からの配置場所*/
 	top: 45%;			/*ウィンドウに対して上からの配置場所*/
@@ -440,7 +440,7 @@ header #logo img {
 	line-height: 130px;	/*高さ*/
 }
 
-/*４つ目のメニュー(Instagram)*/
+/*４つ目のメニュー(None)*/
 #menubar li:nth-of-type(4) {
 	left: 7%;			/*ウィンドウに対して左からの配置場所*/
 	top: 80%;			/*ウィンドウに対して上からの配置場所*/
