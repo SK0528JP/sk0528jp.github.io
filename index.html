@@ -1,142 +1,102 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>SK0528JP</title>
-<link rel="icon" href="images/logo.png" type="image/x-icon">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SK0528JP - プロフィール</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+    <header>
+        <div class="container">
+            <h1 class="logo"><a href="#">SK0528JP</a></h1>
+            <nav class="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#about" data-lang-ja="概要" data-lang-en="Overview" data-lang-sv="Översikt">概要</a></li>
+                    <li><a href="#projects" data-lang-ja="活動" data-lang-en="Projects" data-lang-sv="Projekt">活動</a></li>
+                    <li><a href="#contact" data-lang-ja="連絡先" data-lang-en="Contact" data-lang-sv="Kontakt">連絡先</a></li>
+                </ul>
+            </nav>
+            <div class="lang-switcher">
+                <button id="lang-ja" class="active">JA</button>
+                <button id="lang-en">EN</button>
+                <button id="lang-sv">SV</button>
+            </div>
+        </div>
+    </header>
 
-<aside id="mainimg">メインイメージ</aside>
+    <main>
+        <section id="hero" class="container">
+            <div class="hero-content">
+                <h2 data-lang-ja="SK0528JPの公式サイトへようこそ" data-lang-en="Welcome to the Official Site of SK0528JP" data-lang-sv="Välkommen till SK0528JPs Officiella Hemsida">SK0528JPの公式サイトへようこそ</h2>
+                <p class="subtitle" data-lang-ja="技術、デザイン、そしてクリエイティブな挑戦について。" data-lang-en="Exploring technology, design, and creative challenges." data-lang-sv="Utforskar teknik, design och kreativa utmaningar.">技術、デザイン、そしてクリエイティブな挑戦について。</p>
+            </div>
+            <div class="profile-image">
+                <img src="https://via.placeholder.com/250x250/5F7354/FFFFFF?text=SK" alt="SK0528JP Profile">
+            </div>
+        </section>
 
-<header>
+        <section id="about">
+            <div class="container">
+                <h3 data-lang-ja="概要" data-lang-en="Overview" data-lang-sv="Översikt">概要</h3>
+                <div class="grid-layout">
+                    <div class="card">
+                        <i class="fas fa-user-circle"></i>
+                        <h4 data-lang-ja="自己紹介" data-lang-en="About Me" data-lang-sv="Om Mig">自己紹介</h4>
+                        <p data-lang-ja="新しい技術とアイデアに情熱を注ぐ、好奇心旺盛なクリエイターです。Web開発からUI/UXデザインまで、幅広い分野で活動しています。" data-lang-en="I'm a curious creator passionate about new technologies and ideas, active in various fields from web development to UI/UX design." data-lang-sv="Jag är en nyfiken skapare med passion för ny teknik och idéer, aktiv inom olika områden från webbutveckling till UI/UX-design.">新しい技術とアイデアに情熱を注ぐ、好奇心旺盛なクリエイターです。Web開発からUI/UXデザインまで、幅広い分野で活動しています。</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-tools"></i>
+                        <h4 data-lang-ja="スキルセット" data-lang-en="Skills" data-lang-sv="Färdigheter">スキルセット</h4>
+                        <p data-lang-ja="プログラミング言語（JavaScript, Python）、フレームワーク（React, Vue）、デザインツール（Figma, Sketch）などを扱います。" data-lang-en="I work with programming languages (JavaScript, Python), frameworks (React, Vue), and design tools (Figma, Sketch)." data-lang-sv="Jag arbetar med programmeringsspråk (JavaScript, Python), ramverk (React, Vue) och designverktyg (Figma, Sketch).">プログラミング言語（JavaScript, Python）、フレームワーク（React, Vue）、デザインツール（Figma, Sketch）などを扱います。</p>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-star"></i>
+                        <h4 data-lang-ja="ビジョン" data-lang-en="Vision" data-lang-sv="Vision">ビジョン</h4>
+                        <p data-lang-ja="ユーザー体験を第一に考え、シンプルでありながらもパワフルなソリューションを生み出すことを目指しています。" data-lang-en="My goal is to create simple yet powerful solutions, prioritizing the user experience." data-lang-sv="Mitt mål är att skapa enkla men kraftfulla lösningar, med användarupplevelsen i fokus.">ユーザー体験を第一に考え、シンプルでありながらもパワフルなソリューションを生み出すことを目指しています。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-<h1 id="logo"><a href="https://sk0528jp.github.io/"><img src="images/logo.png" alt="Logo"></a></h1>
+        <section id="projects" class="container">
+            <h3 data-lang-ja="活動" data-lang-en="Projects" data-lang-sv="Projekt">活動</h3>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/600x350/5F7354/FFFFFF?text=Project+1" alt="Project 1">
+                <div class="project-info">
+                    <h4 data-lang-ja="プロジェクト名 1" data-lang-en="Project Name 1" data-lang-sv="Projektnamn 1">プロジェクト名 1</h4>
+                    <p data-lang-ja="このプロジェクトでは、〇〇技術を用いて革新的なサービスを開発しました。ユーザーの課題を解決するための機能に注力しています。" data-lang-en="In this project, I developed an innovative service using XX technology, focusing on features that solve user problems." data-lang-sv="I det här projektet utvecklade jag en innovativ tjänst med XX-teknik, med fokus på funktioner som löser användarproblem.">このプロジェクトでは、〇〇技術を用いて革新的なサービスを開発しました。ユーザーの課題を解決するための機能に注力しています。</p>
+                    <a href="https://example.com/project1" class="project-button" data-lang-ja="詳細を見る" data-lang-en="View Details" data-lang-sv="Visa Detaljer">詳細を見る</a>
+                </div>
+            </div>
+            <div class="project-card">
+                <img src="https://via.placeholder.com/600x350/3A5040/FFFFFF?text=Project+2" alt="Project 2">
+                <div class="project-info">
+                    <h4 data-lang-ja="プロジェクト名 2" data-lang-en="Project Name 2" data-lang-sv="Projektnamn 2">プロジェクト名 2</h4>
+                    <p data-lang-ja="UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。" data-lang-en="This project specializes in UI/UX design. I iterated on user tests to pursue an intuitive and beautiful interface." data-lang-sv="Detta projekt specialiserar sig på UI/UX-design. Jag upprepade användartester för att sträva efter ett intuitivt och vackert gränssnitt.">UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。</p>
+                    <a href="https://example.com/project2" class="project-button" data-lang-ja="製品ページへ" data-lang-en="Go to Product Page" data-lang-sv="Gå till Produktsidan">製品ページへ</a>
+                </div>
+            </div>
+        </section>
 
-<nav>
-<ul id="menubar">
-<li><a href="#about">About</a></li>
-<li><a href="#product">Product</a></li>
-<li><a href="#link">Link</a></li>
-<li><a href="#"><i class="fab fa-discord"></i></a></li>
-</ul>
-</nav>
+        <section id="contact" class="container">
+            <h3 data-lang-ja="連絡先" data-lang-en="Contact" data-lang-sv="Kontakt">連絡先</h3>
+            <p data-lang-ja="お仕事のご依頼やご質問など、お気軽にお問い合わせください。" data-lang-en="Feel free to contact me for work inquiries or questions." data-lang-sv="Tveka inte att kontakta mig för arbetsförfrågningar eller frågor.">お仕事のご依頼やご質問など、お気軽にお問い合わせください。</p>
+            <a href="mailto:your-email@example.com" class="cta-button" data-lang-ja="メールを送る" data-lang-en="Send an Email" data-lang-sv="Skicka ett E-postmeddelande">メールを送る</a>
+        </section>
+    </main>
 
-</header>
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SK0528JP. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-<main>
+    <button id="back-to-top" class="back-to-top-button">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 
-<div class="contents bg1">
-
-<div id="notice">
-
-<h2>Notice</h2>
-
-<dl id="new">
-<!-- <dt>2024/09/07<span class="icon-bg2">原神</span></dt>
-<dd>フォンテーヌ評判Lv.10達成</dd>
-	
-<dt>2024/09/06<span>一般</span></dt>
-<dd>Xiaomi SmartBand 8購入</dd>
-	
-<dt>2024/09/06<span class="icon-bg1">重要</span></dt>
-<dd>ホームページ大幅改装</dd> -->
-</dl>
-
-
-</div>
-</section>
-
-</div>
-
-<div class="contents bg2" id="about">
-
-<section>
-
-<h2>About</h2>
-<p>主にHTML/CSS/JavaScriptでなんか作って遊んでます
-<br>使用OSはWindows11/ZorinOS 17/Linux Mint</p>
-<p>スウェーデン語・エスペラント語習得中</p>
-
-<ul>
-  <li>Name：SK0528JP</li>
-  <li>Contact：<a href="mailto:sk0528jp@gmail.com?subject=From HP">sk0528jp@gmail.com</a></li>
-  <li>Association：<a href="https://flegertec-jp.github.io/" target="_blank">Flegertec</a></li>
-</ul>
-
-</section>
-</div>
-
-<div class="contents bg3" id="product">
-
-<section>
-
-<h2>Product</h2>
-<table class="ta1">
-                    <tbody><tr>
-                        <th><b>リンク</b></th>
-                        <th><b>説明</b></th>
-                    </tr>
-                    <tr>
-                        <td><a href="https://sk0528jp.github.io/uuid/" target="_blank">UUID生成システム</a></td>
-                        <td>ランダムにUUIDを生成しコピーできます。</td>
-                    </tr>
-                    <tr>
-                        <td><a href="https://sk0528jp.github.io/caesar/" target="_blank">カエサル暗号変換システム</a></td>
-                        <td>カエサル暗号⇔英字を暗号鍵ごとに変換するシステムです。</td>
-                    </tr>
-		    <tr>
-                        <td><a href="https://sk0528jp.github.io/webradio/" target="_blank">WebRadio</a></td>
-                        <td>世界中のインターネットラジオをリアルタイムで視聴できます</td>
-                    </tr>
-                </tbody></table>
-</section>
-
-</div>
-<!--/#about-->
-
-<!--linkブロック開始＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝-->
-<div class="contents bg4" id="link">
-
-<section>
-
-<h2>Link</h2>
-
-<table class="ta1">
-<caption>Contact/WebSite/etc...</caption>
-
-<th><a href="https://discord.gg/HZnKpYJJsu" target="_blank">Flegertec Official Discord</a></th>
-<td>プログラミングチーム</td>
-</tr>
-
-</table>
-
-</section>
-
-</div>
-<!--/#link-->
-
-</main>
-
-<div class="contents bg1">
-<footer>
-<font size="2">&copy; SK0528JP Aktivitetsperiod 2018〜2025</font>
-</footer>
-</div>
-
-<!--jQueryの読み込み-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
-<!--lightbox用jsファイルの読み込み-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/js/lightbox-plus-jquery.min.js"></script>
-
-<script src="js/main.js"></script>
-
-<!--ページの上部へ戻るボタン-->
-<div class="pagetop"><a href="#"><i class="fas fa-angle-double-up"></i></a></div>
-
+    <script src="script.js"></script>
 </body>
 </html>
