@@ -127,6 +127,7 @@ h4 {
     gap: 48px;
     margin-bottom: 80px;
     padding: 60px 0;
+    background-image: url("../images/bg_main.jpg");
 }
 #hero .hero-content {
     flex: 1;
