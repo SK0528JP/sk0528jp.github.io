@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SK0528JP</title>
+
+    <meta property="og:title" content="SK0528JP Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://sk0528jp.github.io/" />
+    <meta property="og:image" content="https://sk0528jp.github.io/images/logo.png" />
+    <meta property="og:site_name" content="SK0528JP" />
+    <meta property="og:description" content="スウェーデン好きのアマチュアプログラマー、SK0528JPのポートフォリオサイトです。" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@SK0528JP_dev" />
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="images/favicon.ico" type="image/x-icon">
@@ -28,19 +38,21 @@
     </header>
 
     <main>
-        <section id="hero" class="container">
-            <div class="hero-content">
-                <h2 data-lang-ja="SK0528JP" data-lang-en="SK0528JP" data-lang-sv="SK0528JP">SK0528JP</h2>
-                <p class="subtitle" data-lang-ja="ようこそ" data-lang-en="Welcome" data-lang-sv="Välkommen">ようこそ</p>
-            </div>
-            <div class="profile-image">
-                <img src="images/logo.png" alt="SK0528JP logo">
+        <section id="hero">
+            <div class="hero-content-container">
+                <div class="profile-image">
+                    <img src="images/logo.png" alt="SK0528JP logo">
+                </div>
+                <div class="hero-content">
+                    <h2 data-lang-ja="SK0528JP" data-lang-en="SK0528JP" data-lang-sv="SK0528JP">SK0528JP</h2>
+                    <p class="subtitle" data-lang-ja="ようこそ" data-lang-en="Welcome" data-lang-sv="Välkommen">ようこそ</p>
+                </div>
             </div>
         </section>
 
         <section id="about">
             <div class="container">
-                <h3 data-lang-ja="概要" data-lang-en="Overview" data-lang-sv="Översikt">概要</h3>
+                <h3 data-lang-ja="概要" data-lang-en="Overview" data-lang-sv="Översikt" class="section-title">概要</h3>
                 <div class="grid-layout">
                     <div class="card">
                         <i class="fas fa-user-circle"></i>
@@ -57,42 +69,60 @@
                         <h4 data-lang-ja="目標" data-lang-en="Vision" data-lang-sv="Framtidsmål">目標</h4>
                         <p data-lang-ja="現行の能力を伸ばし、新たな知識を身に着け、便利な製品を作ることを目指します。" data-lang-en="My goal is to develop my current skills, acquire new knowledge, and create useful products." data-lang-sv="Jag siktar på att vidareutveckla mina befintliga färdigheter, förvärva nya kunskaper och skapa användbara produkter.">現行の能力を伸ばし、新たな知識を身に着け、便利な製品を作ることを目指します。</p>
                     </div>
+                    <div class="card">
+                        <i class="fas fa-users"></i>
+                        <h4 data-lang-ja="所属チーム" data-lang-en="Team" data-lang-sv="Team">所属チーム</h4>
+                        <p data-lang-ja="Flegertecというプログラミングチームに所属しています。HTML、CSS、JavaScriptを中心に、さまざまなツールの開発を行っています。" data-lang-en="I belong to a programming team called Flegertec. We develop various tools mainly using HTML, CSS, and JavaScript." data-lang-sv="Jag tillhör ett programmeringsteam som heter Flegertec. Vi utvecklar olika verktyg främst med HTML, CSS och JavaScript.">Flegertecというプログラミングチームに所属しています。HTML、CSS、JavaScriptを中心に、さまざまなツールの開発を行っています。</p>
+                        <a href="https://flegertec-jp.github.io/" class="team-button" data-lang-ja="公式サイトへ" data-lang-en="Go to Website" data-lang-sv="Gå till webbplatsen" target="_blank">公式サイトへ</a>
+                    </div>
+                    <div class="card">
+                        <i class="fas fa-gamepad"></i>
+                        <h4 data-lang-ja="ゲーム" data-lang-en="Gaming" data-lang-sv="Spel">ゲーム</h4>
+                        <p data-lang-ja="VALORANTやEscape from Tarkovなどをプレイしています。一緒にプレイできる方募集中です！" data-lang-en="I play games like VALORANT and Escape from Tarkov. Looking for people to play with!" data-lang-sv="Jag spelar spel som VALORANT och Escape from Tarkov. Söker folk att spela med!">VALORANTやEscape from Tarkovなどをプレイしています。一緒にプレイできる方募集中です！</p>
+                    </div>
+                    <div class="card">
+                        <i class="fab fa-windows"></i>
+                        <h4 data-lang-ja="OS" data-lang-en="OS" data-lang-sv="OS">OS</h4>
+                        <p data-lang-ja="Windows 11を使用しています。" data-lang-en="I use Windows 11." data-lang-sv="Jag använder Windows 11.">Windows 11を使用しています。</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="container">
-            <h3 data-lang-ja="活動" data-lang-en="Projects" data-lang-sv="Projekt">活動</h3>
-            <div class="project-card">
-                <img src="images/uuid.png" alt="Preview of UUID">
-                <div class="project-info">
-                    <h4 data-lang-ja="UUIDジェネレーター" data-lang-en="UUID Generator" data-lang-sv="UUID Generator">UUIDジェネレーター</h4>
-                    <p data-lang-ja="UUID（Universally Unique Identifier、汎用一意識別子）を生成するためのツールです。" data-lang-en="A tool for generating a UUID (Universally Unique Identifier)." data-lang-sv="Ett verktyg för att generera en UUID (Universellt Unik Identifierare).">UUID（Universally Unique Identifier、汎用一意識別子）を生成するためのツールです。</p>
-                    <a href="https://sk0528jp.github.io/uuid/" class="project-button" data-lang-ja="使ってみる" data-lang-en="Try it out" data-lang-sv="Prova på" target="_blank">使ってみる</a>
+        <section id="projects">
+            <div class="container">
+                <h3 data-lang-ja="活動" data-lang-en="Projects" data-lang-sv="Projekt" class="section-title">活動</h3>
+                <div class="project-card">
+                    <img src="images/uuid.png" alt="Preview of UUID">
+                    <div class="project-info">
+                        <h4 data-lang-ja="UUIDジェネレーター" data-lang-en="UUID Generator" data-lang-sv="UUID Generator">UUIDジェネレーター</h4>
+                        <p data-lang-ja="UUID（Universally Unique Identifier、汎用一意識別子）を生成するためのツールです。" data-lang-en="A tool for generating a UUID (Universally Unique Identifier)." data-lang-sv="Ett verktyg för att generera en UUID (Universellt Unik Identifierare).">UUID（Universally Unique Identifier、汎用一意識別子）を生成するためのツールです。</p>
+                        <a href="https://sk0528jp.github.io/uuid/" class="project-button" data-lang-ja="使ってみる" data-lang-en="Try it out" data-lang-sv="Prova på" target="_blank">使ってみる</a>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="images/wpc.png" alt="Preview of WPC">
+                    <div class="project-info">
+                        <h4 data-lang-ja="プロジェクト名 2" data-lang-en="Project Name 2" data-lang-sv="Projektnamn 2">プロジェクト名 2</h4>
+                        <p data-lang-ja="UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。" data-lang-en="This project specializes in UI/UX design. I iterated on user tests to pursue an intuitive and beautiful interface." data-lang-sv="Detta projekt specialiserar sig på UI/UX-design. Jag upprepade användartester för att sträva efter ett intuitivt och vackert gränssnitt.">UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。</p>
+                        <a href="https://example.com/project2" class="project-button" data-lang-ja="製品ページへ" data-lang-en="Go to Product Page" data-lang-sv="Gå till webbplatsen">製品ページへ</a>
+                    </div>
                 </div>
             </div>
-            <!-- 一旦非表示
-            <div class="project-card">
-                <img src="https://via.placeholder.com/600x350/3A5040/FFFFFF?text=Project+2" alt="Project 2">
-                <div class="project-info">
-                    <h4 data-lang-ja="プロジェクト名 2" data-lang-en="Project Name 2" data-lang-sv="Projektnamn 2">プロジェクト名 2</h4>
-                    <p data-lang-ja="UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。" data-lang-en="This project specializes in UI/UX design. I iterated on user tests to pursue an intuitive and beautiful interface." data-lang-sv="Detta projekt specialiserar sig på UI/UX-design. Jag upprepade användartester för att sträva efter ett intuitivt och vackert gränssnitt.">UI/UXデザインに特化したプロジェクトです。ユーザーテストを繰り返し、直感的で美しいインターフェースを追求しました。</p>
-                    <a href="https://example.com/project2" class="project-button" data-lang-ja="製品ページへ" data-lang-en="Go to Product Page" data-lang-sv="Gå till Produktsidan">製品ページへ</a>
-                </div>
-            </div>
-            -->
         </section>
 
-        <section id="contact" class="container">
-            <h3 data-lang-ja="連絡先" data-lang-en="Contact" data-lang-sv="Kontakt">連絡先</h3>
-            <p data-lang-ja="製品や私に関するご質問など、お気軽にお問い合わせください。" data-lang-en="Feel free to contact me with any questions you have about my products or myself." data-lang-sv="Tveka inte att kontakta mig om du har några frågor om mina produkter eller mig.">製品や私に関するご質問など、お気軽にお問い合わせください。</p>
-            <a href="mailto:sk0528jp@gmail.com" class="cta-button" data-lang-ja="メールを送る" data-lang-en="Send an Email" data-lang-sv="Skicka ett E-postmeddelande">メールを送る</a>
+        <section id="contact">
+            <div class="container">
+                <h3 data-lang-ja="連絡先" data-lang-en="Contact" data-lang-sv="Kontakt" class="section-title">連絡先</h3>
+                <p data-lang-ja="製品や私に関するご質問など、お気軽にお問い合わせください。" data-lang-en="Feel free to contact me with any questions you have about my products or myself." data-lang-sv="Tveka inte att kontakta mig om du har några frågor om mina produkter eller mig.">製品や私に関するご質問など、お気軽にお問い合わせください。</p>
+                <a href="mailto:sk0528jp@gmail.com" class="cta-button" data-lang-ja="メールを送る" data-lang-en="Send an Email" data-lang-sv="Skicka ett E-postmeddelande">メールを送る</a>
+            </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 SK0528JP. All Rights Reserved.</p>
+            <p>&copy; <span id="current-year"></span> SK0528JP. All Rights Reserved.</p>
         </div>
     </footer>
 
