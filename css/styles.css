@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
+/* MiSansフォントの定義 */
+@font-face {
+    font-family: 'MiSans';
+    src: url('../fonts/MiSans-Normal.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
 :root {
     --dark-bg: #121212;
     --dark-surface: #1E1E1E;
@@ -13,7 +21,7 @@
 body {
     background-color: var(--dark-bg);
     color: var(--text-primary);
-    font-family: var(--font-family);
+    font-family: 'MiSans', var(--font-family), sans-serif;
     margin: 0;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -65,10 +73,24 @@ header .container {
     text-decoration: none;
     font-size: 1rem;
     font-weight: 500;
+    position: relative;
     transition: color 0.3s ease;
 }
 .main-nav a:hover {
     color: var(--text-primary);
+}
+.main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--matcha-green);
+    transition: width 0.3s ease;
+}
+.main-nav a:hover::after {
+    width: 100%;
 }
 
 .lang-switcher button {
@@ -94,7 +116,8 @@ header .container {
 }
 
 main {
-    padding: 48px 0;
+    background-color: var(--dark-surface);
+    padding: 0;
 }
 
 section {
@@ -114,6 +137,15 @@ h3 {
     border-bottom: 1px solid #333;
     padding-bottom: 8px;
 }
+.section-title {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.section-title.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 h4 {
     font-size: 1.2rem;
     font-weight: 500;
@@ -122,12 +154,21 @@ h4 {
 
 /* Hero Section */
 #hero {
+    padding: 80px 0;
+    margin-bottom: 0;
+    background-image: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('../images/bg_main.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.hero-content-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 24px;
     display: flex;
     align-items: center;
     gap: 48px;
-    margin-bottom: 80px;
-    padding: 60px 0;
-    background-image: url("./images/bg_main.jpg");
 }
 #hero .hero-content {
     flex: 1;
@@ -149,12 +190,17 @@ h4 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.5s ease;
+}
+#hero .profile-image img:hover {
+    transform: rotate(360deg);
 }
 
 /* About Section */
 #about {
     background-color: var(--dark-surface);
     padding: 48px 0;
+    margin-bottom: 80px;
 }
 .grid-layout {
     display: grid;
@@ -181,16 +227,32 @@ h4 {
     font-size: 0.9rem;
     color: var(--text-secondary);
 }
+.team-button {
+    display: inline-block;
+    margin-top: 16px;
+    background-color: var(--matcha-green);
+    color: var(--dark-bg);
+    padding: 8px 16px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: opacity 0.3s ease;
+}
+.team-button:hover {
+    opacity: 0.8;
+}
 
 /* Projects Section */
 #projects {
     padding: 48px 0;
+    background-color: var(--dark-surface);
 }
 .project-card {
     display: flex;
     gap: 32px;
     margin-bottom: 40px;
-    background-color: var(--dark-surface);
+    background-color: var(--dark-bg);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: var(--shadow);
@@ -238,6 +300,8 @@ h4 {
 #contact {
     text-align: center;
     padding: 48px 0;
+    background-color: var(--dark-surface);
+    margin-bottom: 0;
 }
 #contact p {
     font-size: 1rem;
@@ -260,7 +324,7 @@ h4 {
 
 /* Footer */
 footer {
-    background-color: var(--dark-surface);
+    background-color: #181818;
     padding: 24px 0;
     text-align: center;
     font-size: 0.8rem;
@@ -281,7 +345,7 @@ footer {
     border-radius: 50%;
     border: none;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+    box-shadow: 2 2px 5px rgba(0,0,0,0.4);
     z-index: 999;
     transition: opacity 0.3s ease, transform 0.3s ease;
     opacity: 0.7;
@@ -296,8 +360,20 @@ footer {
 
 /* レスポンシブ対応 */
 @media (max-width: 768px) {
-    #hero {
+    header .container {
         flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .main-nav {
+        margin-top: 0;
+    }
+    .lang-switcher {
+        margin-top: 0;
+    }
+
+    .hero-content-container {
+        flex-direction: column-reverse;
         text-align: center;
     }
     #hero .hero-content {
@@ -314,14 +390,11 @@ footer {
         width: 100%;
         height: 200px;
     }
-    header .container {
-        flex-wrap: wrap;
-        justify-content: center;
+    #projects .container {
+        padding: 0 16px;
     }
-    .main-nav {
-        margin-top: 16px;
-    }
-    .lang-switcher {
-        margin-top: 16px;
+    .project-card {
+        margin: 0 auto 40px;
+        max-width: 400px;
     }
 }
