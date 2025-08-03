@@ -3,7 +3,7 @@
 /* MiSansフォントの定義 */
 @font-face {
     font-family: 'MiSans';
-    src: url('../fonts/MiSans-Normal.woff2') format('woff2');
+    src: url('../font/MiSans-Normal.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
