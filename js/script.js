@@ -3,9 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offset = 80; // ヘッダーの高さ分を調整
+                const bodyRect = document.body.getBoundingClientRect().top;
+                const elementRect = target.getBoundingClientRect().top;
+                const elementPosition = elementRect - bodyRect;
+                const offsetPosition = elementPosition - offset;
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 
@@ -55,14 +65,14 @@ document.addEventListener('DOMContentLoaded', () => {
         sectionObserver.observe(section);
     });
 
-    // Back to Topボタンの表示/非表示
+    // Back to Topボタンの表示/非表示アニメーション
     const backToTopButton = document.getElementById('back-to-top');
     
     window.addEventListener('scroll', () => {
         if (window.scrollY > 300) {
-            backToTopButton.style.display = 'block';
+            backToTopButton.classList.add('show');
         } else {
-            backToTopButton.style.display = 'none';
+            backToTopButton.classList.remove('show');
         }
     });
 
@@ -72,4 +82,37 @@ document.addEventListener('DOMContentLoaded', () => {
             behavior: 'smooth'
         });
     });
+
+    // 画像カルーセル
+    const carouselInner = document.querySelector('.carousel-inner');
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    const prevButton = document.querySelector('.carousel-control-prev');
+    const nextButton = document.querySelector('.carousel-control-next');
+    let currentIndex = 0;
+
+    const showSlide = (index) => {
+        carouselItems.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('active');
+            } else {
+                item.classList.remove('active');
+            }
+        });
+    };
+
+    const nextSlide = () => {
+        currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
+        showSlide(currentIndex);
+    };
+
+    const prevSlide = () => {
+        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
+        showSlide(currentIndex);
+    };
+
+    prevButton.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+
+    // 初期表示
+    showSlide(currentIndex);
 });
