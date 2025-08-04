@@ -305,21 +305,17 @@ h4 {
     position: relative;
     max-width: 800px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: hidden; /* この領域からはみ出る部分を隠す */
     border-radius: 8px;
     box-shadow: var(--shadow);
 }
 .carousel-inner {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
+    display: flex; /* 子要素を横並びにする */
+    transition: transform 0.5s ease-in-out; /* スライドアニメーション */
 }
 .carousel-item {
-    min-width: 100%;
-    transition: opacity 0.5s ease-in-out;
-    opacity: 0;
-}
-.carousel-item.active {
-    opacity: 1;
+    min-width: 100%; /* 各アイテムがカルーセルの幅いっぱいに広がるようにする */
+    flex-shrink: 0; /* アイテムが縮まないようにする */
 }
 .carousel-item img {
     width: 100%;
