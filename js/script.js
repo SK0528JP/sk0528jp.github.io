@@ -83,36 +83,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 画像カルーセル
-    const carouselInner = document.querySelector('.carousel-inner');
-    const carouselItems = document.querySelectorAll('.carousel-item');
-    const prevButton = document.querySelector('.carousel-control-prev');
-    const nextButton = document.querySelector('.carousel-control-next');
-    let currentIndex = 0;
+// 画像カルーセル
+const carouselInner = document.querySelector('.carousel-inner');
+const carouselItems = document.querySelectorAll('.carousel-item');
+const prevButton = document.querySelector('.carousel-control-prev');
+const nextButton = document.querySelector('.carousel-control-next');
+let currentIndex = 0;
 
-    const showSlide = (index) => {
-        carouselItems.forEach((item, i) => {
-            if (i === index) {
-                item.classList.add('active');
-            } else {
-                item.classList.remove('active');
-            }
-        });
-    };
+const showSlide = (index) => {
+    // carousel-inner の transform プロパティを更新してスライドさせる
+    carouselInner.style.transform = `translateX(${-100 * index}%)`;
+};
 
-    const nextSlide = () => {
-        currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
-        showSlide(currentIndex);
-    };
-
-    const prevSlide = () => {
-        currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
-        showSlide(currentIndex);
-    };
-
-    prevButton.addEventListener('click', prevSlide);
-    nextButton.addEventListener('click', nextSlide);
-
-    // 初期表示
+const nextSlide = () => {
+    currentIndex = (currentIndex < carouselItems.length - 1) ? currentIndex + 1 : 0;
     showSlide(currentIndex);
+};
+
+const prevSlide = () => {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : carouselItems.length - 1;
+    showSlide(currentIndex);
+};
+
+prevButton.addEventListener('click', prevSlide);
+nextButton.addEventListener('click', nextSlide);
+
+// 初期表示
+showSlide(currentIndex);
 });
