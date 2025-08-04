@@ -1,53 +1,116 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Viewer</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+        @font-face {
+            font-family: 'MiSans';
+            src: url('https://sk0528jp.github.io/font/MiSans-Normal.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        :root {
+            --dark-bg: #121212;
+            --dark-surface: #1E1E1E;
+            --matcha-green: #5F7354;
+            --text-primary: #E8E8E8;
+            --text-secondary: #A0A0A0;
+            --font-family: 'MiSans', 'Roboto', sans-serif;
+            --shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
+            font-family: var(--font-family);
+            margin: 0;
             padding: 0;
-            background-color: #f8f9fa;
-            color: #333;
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 600px;
+            width: 90%;
+            padding: 2rem;
+            background-color: var(--dark-surface);
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            border: 1px solid #333;
         }
 
         h1 {
-            text-align: center;
+            color: var(--matcha-green);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 2rem;
+            border-bottom: 2px solid var(--matcha-green);
+            display: inline-block;
+            padding-bottom: 0.5rem;
         }
 
         #file-list {
-            margin: 20px auto;
-            max-width: 600px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: #fff;
-            border-radius: 5px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
 
         .file-item {
-            margin: 10px 0;
-            padding: 10px;
             display: flex;
             justify-content: space-between;
-            background: #e9ecef;
-            border-radius: 3px;
+            align-items: center;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #282828;
+            border-radius: 8px;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .file-item:hover {
+            background-color: #383838;
+            transform: translateY(-2px);
         }
 
         .file-item a {
             text-decoration: none;
-            color: #007bff;
+            color: var(--text-primary);
+            font-weight: 500;
+            flex-grow: 1;
+            text-align: left;
+            transition: color 0.2s ease;
         }
 
         .file-item a:hover {
-            text-decoration: underline;
+            color: var(--matcha-green);
+        }
+
+        .download-icon {
+            color: var(--matcha-green);
+            margin-left: 1rem;
+            font-size: 1.2rem;
+            transition: transform 0.2s ease;
+        }
+        
+        .download-icon:hover {
+            transform: scale(1.1);
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <h1>File Viewer & Downloader</h1>
-    <div id="file-list"></div>
+    <div class="container">
+        <h1>File Viewer</h1>
+        <ul id="file-list"></ul>
+    </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -55,7 +118,7 @@
 
             // 手動でファイルリストを定義
             const files = [
-                { name: "KTOK,zip", path: "file/ktok.zip" },
+                { name: "KTOK.zip", path: "file/ktok.zip" },
                 { name: "Admin.zip", path: "file/admin.zip" },
                 { name: "Minecraft1.zip", path: "file/minecraft1.zip" },
                 { name: "Minecraft2.zip", path: "file/minecraft2.zip" },
@@ -63,15 +126,20 @@
 
             // 動的にファイルリストを表示
             files.forEach(file => {
-                const fileItem = document.createElement("div");
+                const fileItem = document.createElement("li");
                 fileItem.className = "file-item";
                 
                 const link = document.createElement("a");
                 link.href = file.path;
                 link.textContent = file.name;
                 link.download = file.name;
+                
+                const icon = document.createElement("span");
+                icon.className = "download-icon";
+                icon.innerHTML = '<i class="fas fa-download"></i>';
 
                 fileItem.appendChild(link);
+                fileItem.appendChild(icon);
                 fileList.appendChild(fileItem);
             });
         });
