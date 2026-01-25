@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAL Guide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Nordic Color Palette (Nord Theme inspired) */
+            --nord0: #2E3440; /* Deep Night */
+            --nord1: #3B4252;
+            --nord4: #D8DEE9; /* Snow Storm */
+            --nord6: #ECEFF4; /* Pure Snow */
+            --nord8: #88C0D0; /* Frost Blue */
+            --nord10: #5E81AC; /* Arctic Ocean */
+            --nord11: #BF616A; /* Aurora Red (Warning) */
+            --nord14: #A3BE8C; /* Aurora Green (Success) */
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--nord6);
+            color: var(--nord0);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: white;
+            padding: 40px;
+            margin: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(46, 52, 64, 0.05);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--nord10);
+            font-weight: 600;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: var(--nord1);
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .card {
+            background: var(--nord4);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+        }
+
+        .step-num {
+            background: var(--nord10);
+            color: white;
+            width: 28px;
+            height: 28px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            font-size: 0.8rem;
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        h2 {
+            font-size: 1.1rem;
+            display: inline-block;
+            margin: 0;
+            vertical-align: middle;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 40px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        li::before {
+            content: "\f054"; /* FontAwesome angle-right */
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            left: -25px;
+            color: var(--nord8);
+            font-size: 0.8rem;
+        }
+
+        .warning-box {
+            border-left: 4px solid var(--nord11);
+            background: #fff5f5;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .warning-box i {
+            color: var(--nord11);
+            margin-right: 10px;
+        }
+
+        .code-block {
+            background: var(--nord0);
+            color: var(--nord4);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            overflow-x: auto;
+            position: relative;
+        }
+
+        .copy-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--nord10);
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.7rem;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 0.8rem;
+            color: var(--nord1);
+        }
+
+        strong {
+            color: var(--nord10);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <i class="fa-solid fa-snowflake" style="font-size: 2rem; color: var(--nord8); margin-bottom: 15px;"></i>
+        <h1>FAL Guide</h1>
+        <p class="subtitle">自動ログイン用Cookie（ltoken / ltuid）の取得手順と注意事項について</p>
+    </header>
+
+    <div class="card">
+        <div class="step-num">1</div>
+        <h2>公式サイトへログイン</h2>
+        <ul>
+            <li>PCのブラウザで <a href="https://www.hoyolab.com/" target="_blank" style="color: var(--nord10);">HoYoLAB</a> を開く</li>
+            <li>対象のアカウントでログインを完了させる</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="step-num">2</div>
+        <h2>デベロッパーツールを起動</h2>
+        <ul>
+            <li><code>F12</code> キー、または右クリック ➔ <strong>「検証」</strong> を選択</li>
+            <li>上部タブの <strong>「Application（アプリケーション）」</strong> をクリック</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="step-num">3</div>
+        <h2>Cookieの値を抽出</h2>
+        <ul>
+            <li>左サイドバーの「Storage」➔ 「Cookies」➔ 「hoyolab.com」を選択</li>
+            <li>フィルター欄に <code>v2</code> と入力して絞り込む</li>
+            <li><strong>ltoken_v2</strong> と <strong>ltuid_v2</strong> の「Value（値）」をコピー</li>
+        </ul>
+    </div>
+
+    <div class="warning-box">
+        <h3><i class="fa-solid fa-triangle-exclamation"></i> 注意事項</h3>
+        <p style="font-size: 0.9rem;">
+            ・<strong>共有禁止:</strong> この値はあなたのログインパスワードと同等の権限を持ちます、第三者に共有しないでください、本システム管理者はこれらの情報について、ログイン自動化のみに利用し、厳重に管理致します。<br>
+            ・<strong>ログアウト厳禁:</strong> ブラウザで「ログアウト」するとCookieは即座に無効化されます。<br>
+            ・<strong>有効期限:</strong> 数ヶ月で切れる場合があります。動かなくなったら再取得してください。
+        </p>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <p style="font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-code"></i>【管理者用】 GAS 貼り付け用テンプレート</p>
+        <div class="code-block" id="codeTemplate">
+const token = "ltoken_v2=取得した値; ltuid_v2=取得した値;";
+            <button class="copy-btn" onclick="copyCode()">Copy</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Nordic Automation Tools | Created for SK0528JP
+    </footer>
+</div>
+
+<script>
+    function copyCode() {
+        const text = document.getElementById('codeTemplate').innerText.replace('Copy', '').trim();
+        navigator.clipboard.writeText(text).then(() => {
+            alert('コピーしました！GASの冒頭に貼り付けてください。');
+        });
+    }
+</script>
+
+</body>
+</html>
