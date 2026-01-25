@@ -473,3 +473,41 @@ footer {
         a:hover {
             opacity: 0.8;
         }
+
+/* --- Contact List Styles --- */
+.contact-list-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left; /* アイコンを左揃えにする */
+    display: inline-block; /* 親のtext-align: centerの影響を受けつつ、自身はブロック化 */
+}
+
+.contact-list li {
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 16px; /* アイコンと文字の間隔 */
+}
+
+.contact-list li i {
+    color: var(--matcha-green);
+    width: 24px; /* アイコンの幅を固定して縦列を揃える */
+    text-align: center;
+    font-size: 1.2rem;
+}
+
+/* モバイル調整 */
+@media (max-width: 768px) {
+    .contact-list li {
+        font-size: 1rem;
+    }
+}
