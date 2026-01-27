@@ -386,6 +386,7 @@
         <div class="warning-title"><i class="fa-solid fa-triangle-exclamation"></i> 重要：取り扱いについて</div>
         <ul style="color: var(--text-main);">
             <li style="color: inherit;"><strong>第三者への共有禁止:</strong> この情報はパスワードと同じです。管理者以外には絶対に教えないでください。</li>
+            <li style="color: inherit;"><strong>データの取り扱い:</strong> 本システム管理者はこれらの情報について、ログイン自動化のみに利用し、厳重に管理致します。</li>
             <li style="color: inherit;"><strong>ログアウト禁止:</strong> ブラウザで「ログアウト」ボタンを押すと、提出したキーが無効になります。サイトを閉じるだけにしてください。</li>
         </ul>
     </div>
@@ -406,7 +407,7 @@
         }
 
         // 提出用フォーマット作成
-        const formattedText = `【FALS設定情報提出】\n\n■ltoken_v2:\n${ltoken}\n\n■ltuid_v2:\n${ltuid}\n\nよろしくお願いします。`;
+        const formattedText = `【FALS設定情報提出】\n\n■ltoken_v2:\n${ltoken}\n\n■ltuid_v2:\n${ltuid}\n\n`;
 
         navigator.clipboard.writeText(formattedText).then(() => {
             const btn = document.querySelector('.copy-btn');
