@@ -3,163 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAL Guide</title>
+    
+    <meta property="og:title" content="FALS 設定ガイド | 新規・更新ユーザー向け">
+    <meta property="og:description" content="HoYoLAB自動ログインシステム(FALS)の利用に必要な認証情報の取得手順と提出方法について。">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://example.com/fals-guide"> <meta property="og:image" content="https://placehold.co/1200x630/2E3440/ECEFF4?text=FALS+Guide"> <meta name="theme-color" content="#5E81AC">
+
+    <title>FALS Setup Guide</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            /* Nordic Color Palette (Nord Theme inspired) */
-            --nord0: #2E3440; /* Deep Night */
-            --nord1: #3B4252;
-            --nord4: #D8DEE9; /* Snow Storm */
-            --nord6: #ECEFF4; /* Pure Snow */
-            --nord8: #88C0D0; /* Frost Blue */
-            --nord10: #5E81AC; /* Arctic Ocean */
-            --nord11: #BF616A; /* Aurora Red (Warning) */
-            --nord14: #A3BE8C; /* Aurora Green (Success) */
+            /* Nordic Color Palette Variables */
+            --bg-body: #ECEFF4;       /* nord6 */
+            --bg-card: #FFFFFF;       /* pure white */
+            --bg-input: #E5E9F0;      /* nord5 */
+            --text-main: #2E3440;     /* nord0 */
+            --text-sub: #4C566A;      /* nord3 */
+            --accent: #5E81AC;        /* nord10 */
+            --accent-hover: #81A1C1;  /* nord9 */
+            --highlight: #88C0D0;     /* nord8 */
+            --success: #A3BE8C;       /* nord14 */
+            --warning-bg: #FFF5F5;
+            --warning-border: #BF616A;/* nord11 */
+            --code-bg: #2E3440;       /* nord0 */
+            --code-text: #D8DEE9;     /* nord4 */
+            --shadow: rgba(46, 52, 64, 0.1);
+        }
+
+        /* Dark Mode Override */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --bg-body: #2E3440;       /* nord0 */
+                --bg-card: #3B4252;       /* nord1 */
+                --bg-input: #434C5E;      /* nord2 */
+                --text-main: #ECEFF4;     /* nord6 */
+                --text-sub: #D8DEE9;      /* nord4 */
+                --accent: #88C0D0;        /* nord8 */
+                --accent-hover: #81A1C1;  /* nord9 */
+                --highlight: #5E81AC;     /* nord10 */
+                --warning-bg: #4C3539;    /* Darker red for bg */
+                --warning-border: #BF616A;
+                --shadow: rgba(0, 0, 0, 0.3);
+            }
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background-color: var(--nord6);
-            color: var(--nord0);
-            line-height: 1.6;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
             margin: 0;
-            padding: 0;
+            padding: 20px;
+            line-height: 1.6;
             display: flex;
             justify-content: center;
-            align-items: center;
             min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .container {
-            width: 90%;
+            width: 100%;
             max-width: 800px;
-            background: white;
+            background: var(--bg-card);
             padding: 40px;
-            margin: 20px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(46, 52, 64, 0.05);
+            border-radius: 24px;
+            box-shadow: 0 10px 40px var(--shadow);
+            transition: background 0.3s ease;
         }
 
+        /* Header Section */
         header {
             text-align: center;
             margin-bottom: 40px;
+            border-bottom: 2px solid var(--bg-input);
+            padding-bottom: 20px;
         }
 
         h1 {
-            color: var(--nord10);
-            font-weight: 600;
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 2rem;
+            margin: 10px 0;
+            letter-spacing: -0.5px;
         }
 
         .subtitle {
-            color: var(--nord1);
-            font-size: 0.9rem;
-            opacity: 0.8;
+            color: var(--text-sub);
+            font-size: 0.95rem;
         }
 
-        .card {
-            background: var(--nord4);
+        /* Mechanism Section (Why & How) */
+        .mechanism-box {
+            background: var(--bg-input);
             border-radius: 12px;
             padding: 20px;
+            margin-bottom: 30px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
+        }
+        
+        .mechanism-icon {
+            background: var(--accent);
+            color: var(--bg-card);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .mechanism-content h3 {
+            margin: 0 0 5px 0;
+            font-size: 1.1rem;
+        }
+        
+        .mechanism-content p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: var(--text-sub);
+        }
+
+        /* Step Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--bg-input);
+            border-radius: 16px;
+            padding: 24px;
             margin-bottom: 20px;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
+            border-color: var(--accent);
             transform: translateY(-2px);
         }
 
+        .step-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
         .step-num {
-            background: var(--nord10);
-            color: white;
-            width: 28px;
-            height: 28px;
-            display: inline-flex;
+            background: var(--accent);
+            color: var(--bg-card); /* Text matches card bg usually white/dark-grey */
+            width: 32px;
+            height: 32px;
+            display: flex;
             justify-content: center;
             align-items: center;
-            border-radius: 50%;
-            font-size: 0.8rem;
-            margin-right: 10px;
-            vertical-align: middle;
+            border-radius: 10px;
+            font-weight: 700;
+            margin-right: 15px;
         }
 
         h2 {
-            font-size: 1.1rem;
-            display: inline-block;
+            font-size: 1.2rem;
             margin: 0;
-            vertical-align: middle;
+            color: var(--text-main);
         }
 
         ul {
             list-style: none;
-            padding-left: 40px;
-            margin-top: 15px;
+            padding: 0;
+            margin: 0;
+            padding-left: 10px;
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             position: relative;
+            padding-left: 25px;
+            color: var(--text-sub);
         }
 
         li::before {
-            content: "\f054"; /* FontAwesome angle-right */
+            content: "\f00c"; /* check icon */
             font-family: "Font Awesome 6 Free";
             font-weight: 900;
             position: absolute;
-            left: -25px;
-            color: var(--nord8);
-            font-size: 0.8rem;
+            left: 0;
+            top: 2px;
+            color: var(--success);
         }
 
+        /* Key Value Highlight */
+        .key-value {
+            display: inline-block;
+            background: var(--bg-input);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: var(--accent);
+            font-weight: bold;
+            border: 1px solid var(--highlight);
+        }
+
+        /* Warning Box */
         .warning-box {
-            border-left: 4px solid var(--nord11);
-            background: #fff5f5;
-            padding: 15px 20px;
+            border-left: 4px solid var(--warning-border);
+            background: var(--warning-bg);
+            padding: 20px;
             border-radius: 8px;
-            margin-top: 30px;
+            margin: 30px 0;
         }
 
-        .warning-box i {
-            color: var(--nord11);
-            margin-right: 10px;
+        .warning-title {
+            color: var(--warning-border);
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* Copy Section */
+        .final-action {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .code-container {
+            position: relative;
+            margin-top: 15px;
+            text-align: left;
         }
 
         .code-block {
-            background: var(--nord0);
-            color: var(--nord4);
-            padding: 15px;
-            border-radius: 8px;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 0.85rem;
+            background: var(--code-bg);
+            color: var(--code-text);
+            padding: 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
             overflow-x: auto;
-            position: relative;
+            white-space: pre-wrap;
+            word-break: break-all;
+            border: 1px solid var(--text-sub);
         }
 
         .copy-btn {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            background: var(--nord10);
+            background: var(--accent);
             color: white;
             border: none;
-            padding: 5px 10px;
-            border-radius: 4px;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
-            font-size: 0.7rem;
+            transition: background 0.2s;
+            margin-top: 15px;
+            width: 100%;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-btn:hover {
+            background: var(--accent-hover);
+        }
+
+        .copy-btn:active {
+            transform: scale(0.98);
         }
 
         footer {
             text-align: center;
-            margin-top: 40px;
+            margin-top: 50px;
             font-size: 0.8rem;
-            color: var(--nord1);
+            color: var(--text-sub);
+            opacity: 0.7;
+        }
+        
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 600;
         }
 
-        strong {
-            color: var(--nord10);
+        /* Mobile Adjustments */
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 1.5rem; }
+            .card { padding: 15px; }
         }
     </style>
 </head>
@@ -167,66 +300,128 @@
 
 <div class="container">
     <header>
-        <i class="fa-solid fa-snowflake" style="font-size: 2rem; color: var(--nord8); margin-bottom: 15px;"></i>
-        <h1>FAL Guide</h1>
-        <p class="subtitle">自動ログイン用Cookie（ltoken / ltuid）の取得手順と注意事項について</p>
+        <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 10px;">
+            <i class="fa-solid fa-robot" style="font-size: 2rem; color: var(--accent);"></i>
+        </div>
+        <h1>FALS Setup Guide</h1>
+        <p class="subtitle">自動ログインシステム(FALS) 新規・更新手続きガイド</p>
     </header>
 
-    <div class="card">
-        <div class="step-num">1</div>
-        <h2>公式サイトへログイン</h2>
-        <ul>
-            <li>PCのブラウザで <a href="https://www.hoyolab.com/" target="_blank" style="color: var(--nord10);">HoYoLAB</a> を開く</li>
-            <li>対象のアカウントでログインを完了させる</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="step-num">2</div>
-        <h2>デベロッパーツールを起動</h2>
-        <ul>
-            <li><code>F12</code> キー、または右クリック ➔ <strong>「検証」</strong> を選択</li>
-            <li>上部タブの <strong>「Application（アプリケーション）」</strong> をクリック</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <div class="step-num">3</div>
-        <h2>Cookieの値を抽出</h2>
-        <ul>
-            <li>左サイドバーの「Storage」➔ 「Cookies」➔ 「hoyolab.com」を選択</li>
-            <li>フィルター欄に <code>v2</code> と入力して絞り込む</li>
-            <li><strong>ltoken_v2</strong> と <strong>ltuid_v2</strong> の「Value（値）」をコピー</li>
-        </ul>
-    </div>
-
-    <div class="warning-box">
-        <h3><i class="fa-solid fa-triangle-exclamation"></i> 注意事項</h3>
-        <p style="font-size: 0.9rem;">
-            ・<strong>共有禁止:</strong> この値はあなたのログインパスワードと同等の権限を持ちます、第三者に共有しないでください、本システム管理者はこれらの情報について、ログイン自動化のみに利用し、厳重に管理致します。<br>
-            ・<strong>ログアウト厳禁:</strong> ブラウザで「ログアウト」するとCookieは即座に無効化されます。<br>
-            ・<strong>有効期限:</strong> 数ヶ月で切れる場合があります。動かなくなったら再取得してください。
-        </p>
-    </div>
-
-    <div style="margin-top: 30px;">
-        <p style="font-size: 0.9rem; font-weight: 600;"><i class="fa-solid fa-code"></i>【管理者用】 GAS 貼り付け用テンプレート</p>
-        <div class="code-block" id="codeTemplate">
-const token = "ltoken_v2=取得した値; ltuid_v2=取得した値;";
-            <button class="copy-btn" onclick="copyCode()">Copy</button>
+    <div class="mechanism-box">
+        <div class="mechanism-icon"><i class="fa-solid fa-key"></i></div>
+        <div class="mechanism-content">
+            <h3>何をする必要がありますか？</h3>
+            <p>FALSがあなたの代わりに毎日ログインボーナスを受け取るには、<strong>「合鍵（Cookie）」</strong>が必要です。<br>
+            この「合鍵」は非常に長いため、以下の手順でPCから取得し、管理者に提出してください。</p>
         </div>
     </div>
 
+    <div class="card">
+        <div class="step-header">
+            <div class="step-num">1</div>
+            <h2>公式サイトへログイン</h2>
+        </div>
+        <ul>
+            <li>PCのブラウザ（Chrome/Edge等）で <a href="https://www.hoyolab.com/" target="_blank">HoYoLAB公式サイト <i class="fa-solid fa-external-link-alt"></i></a> を開きます。</li>
+            <li>自動化したいアカウントでログインしていることを確認してください。</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="step-header">
+            <div class="step-num">2</div>
+            <h2>開発者ツールを開く</h2>
+        </div>
+        <ul>
+            <li>キーボードの <span class="key-value">F12</span> キーを押します。</li>
+            <li>またはページ上の何もない所で右クリック ➔ <strong>「検証」</strong> を選択します。</li>
+            <li>画面右（または下）に出るパネルの上部タブから <strong>「Application」</strong> を探してクリックします。<br><span style="font-size:0.8em; opacity:0.8;">※見当たらない場合は「>>」マークの中にあります。</span></li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="step-header">
+            <div class="step-num">3</div>
+            <h2>情報の抽出</h2>
+        </div>
+        <ul>
+            <li>左メニュー：Storage ➔ Cookies ➔ <strong>https://www.hoyolab.com</strong> をクリック。</li>
+            <li>右側のリストにある「Filter」欄に <span class="key-value">v2</span> と入力して絞り込みます。</li>
+            <li>以下の2つの項目の <strong>Value（値）</strong> をコピーしてメモ帳などに控えてください。
+                <div style="margin-top:10px; display:grid; gap:10px;">
+                    <div style="background:var(--bg-input); padding:10px; border-radius:8px;">
+                        <i class="fa-solid fa-tag" style="color:var(--accent);"></i> 名前: <strong>ltoken_v2</strong><br>
+                        <span style="font-size:0.8rem; color:var(--text-sub);">値の例: v2_CAISDGM5...（非常に長い文字列）</span>
+                    </div>
+                    <div style="background:var(--bg-input); padding:10px; border-radius:8px;">
+                        <i class="fa-solid fa-id-badge" style="color:var(--accent);"></i> 名前: <strong>ltuid_v2</strong><br>
+                        <span style="font-size:0.8rem; color:var(--text-sub);">値の例: 12345678（数字のみ）</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="final-action">
+        <h3 style="color: var(--accent);"> <i class="fa-solid fa-paper-plane"></i> 管理者への提出フォーマット</h3>
+        <p style="font-size: 0.9rem; color: var(--text-sub);">
+            下のボックスに取得した値を貼り付けると、提出用のテキストが自動生成されます。<br>
+            <span style="color: var(--warning-border);">※管理者にDM等で送る際に使用してください。</span>
+        </p>
+
+        <div style="display:flex; flex-direction:column; gap:10px; text-align:left;">
+            <label style="font-size:0.8rem; font-weight:bold;">ltoken_v2 (長い文字列)</label>
+            <input type="text" id="input_ltoken" placeholder="v2_CAISD..." style="padding:10px; border-radius:6px; border:1px solid var(--bg-input); background:var(--bg-card); color:var(--text-main); width:96%;">
+            
+            <label style="font-size:0.8rem; font-weight:bold;">ltuid_v2 (数字)</label>
+            <input type="text" id="input_ltuid" placeholder="例: 80000000" style="padding:10px; border-radius:6px; border:1px solid var(--bg-input); background:var(--bg-card); color:var(--text-main); width:96%;">
+        </div>
+
+        <button class="copy-btn" onclick="generateAndCopy()">
+            <i class="fa-regular fa-copy"></i> テキストを作成してコピー
+        </button>
+    </div>
+
+    <div class="warning-box">
+        <div class="warning-title"><i class="fa-solid fa-triangle-exclamation"></i> 重要：取り扱いについて</div>
+        <ul style="color: var(--text-main);">
+            <li style="color: inherit;"><strong>第三者への共有禁止:</strong> この情報はパスワードと同じです。管理者以外には絶対に教えないでください。</li>
+            <li style="color: inherit;"><strong>ログアウト禁止:</strong> ブラウザで「ログアウト」ボタンを押すと、提出したキーが無効になります。サイトを閉じるだけにしてください。</li>
+        </ul>
+    </div>
+
     <footer>
-        &copy; 2026 Nordic Automation Tools | Created for SK0528JP
+        &copy; 2026 FALS Project | Created for SK0528JP Users
     </footer>
 </div>
 
 <script>
-    function copyCode() {
-        const text = document.getElementById('codeTemplate').innerText.replace('Copy', '').trim();
-        navigator.clipboard.writeText(text).then(() => {
-            alert('コピーしました！GASの冒頭に貼り付けてください。');
+    function generateAndCopy() {
+        const ltoken = document.getElementById('input_ltoken').value.trim();
+        const ltuid = document.getElementById('input_ltuid').value.trim();
+
+        if (!ltoken || !ltuid) {
+            alert('ltoken_v2 と ltuid_v2 の両方を入力してください。');
+            return;
+        }
+
+        // 提出用フォーマット作成
+        const formattedText = `【FALS設定情報提出】\n\n■ltoken_v2:\n${ltoken}\n\n■ltuid_v2:\n${ltuid}\n\nよろしくお願いします。`;
+
+        navigator.clipboard.writeText(formattedText).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fa-solid fa-check"></i> コピー完了！';
+            btn.style.background = 'var(--success)';
+            
+            setTimeout(() => {
+                btn.innerHTML = originalText;
+                btn.style.background = 'var(--accent)';
+            }, 2000);
+            
+            alert('提出用テキストをクリップボードにコピーしました。\n管理者に貼り付けて送信してください。');
+        }).catch(err => {
+            alert('コピーに失敗しました。手動でコピーしてください。');
         });
     }
 </script>
